@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>{{ config('app.name', 'SalaryNegotiator') }} - Win Better Job Offers</title>
+    @include('components.meta', ['title' => config('app.name', 'LowBall') . ' - Win Better Job Offers'])
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />

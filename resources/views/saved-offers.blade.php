@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Saved Offers | {{ config('app.name', 'SalaryNegotiator') }}</title>
+    @include('components.meta', ['title' => 'Saved Offers | ' . config('app.name', 'LowBall')])
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
@@ -110,15 +110,19 @@
     class="bg-background-light dark:bg-background-dark font-display text-navy-deep dark:text-slate-100 transition-colors duration-300">
     <div class="flex min-h-screen relative w-full overflow-x-hidden">
         <!-- Mobile Sidebar Backdrop -->
-        <div id="sidebarBackdrop" class="fixed inset-0 bg-navy-deep/80 backdrop-blur-sm z-40 hidden md:hidden opacity-0 transition-opacity duration-300"></div>
+        <div id="sidebarBackdrop"
+            class="fixed inset-0 bg-navy-deep/80 backdrop-blur-sm z-40 hidden md:hidden opacity-0 transition-opacity duration-300">
+        </div>
 
         <!-- Sidebar -->
         <aside id="sidebar"
             class="w-64 border-r border-slate-200 dark:border-primary/10 bg-white dark:bg-navy-deep flex flex-col fixed md:sticky top-0 h-screen z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300">
             <div class="flex items-center justify-between p-6">
                 <a href="{{ route('home') }}" class="flex items-center gap-3">
-                    <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'LowBall') }} Logo" class="h-8 w-auto rounded-lg">
-                    <span class="text-lg font-extrabold tracking-tight">{{ config('app.name', 'SalaryNegotiator') }}</span>
+                    <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'LowBall') }} Logo"
+                        class="h-8 w-auto rounded-lg">
+                    <span
+                        class="text-lg font-extrabold tracking-tight">{{ config('app.name', 'SalaryNegotiator') }}</span>
                 </a>
                 <button id="closeSidebarBtn" class="md:hidden text-slate-500 hover:text-primary transition-colors">
                     <span class="material-symbols-outlined">close</span>
@@ -145,12 +149,14 @@
             <header
                 class="h-20 bg-white/80 dark:bg-navy-deep/80 backdrop-blur-md border-b border-slate-200 dark:border-primary/10 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-10 w-full">
                 <div class="flex items-center gap-4">
-                    <button id="mobileMenuBtn" class="md:hidden text-slate-500 hover:text-primary transition-colors flex items-center justify-center">
+                    <button id="mobileMenuBtn"
+                        class="md:hidden text-slate-500 hover:text-primary transition-colors flex items-center justify-center">
                         <span class="material-symbols-outlined text-2xl">menu</span>
                     </button>
                     <div>
                         <h2 class="text-xl sm:text-2xl font-black tracking-tight">Saved Offers</h2>
-                        <p class="text-sm text-sage-green dark:text-slate-400 hidden sm:block">Track and compare your active job opportunities</p>
+                        <p class="text-sm text-sage-green dark:text-slate-400 hidden sm:block">Track and compare your
+                            active job opportunities</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-6">

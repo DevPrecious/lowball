@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Reset Password | {{ config('app.name', 'SalaryNegotiator') }}</title>
+    @include('components.meta', ['title' => 'Reset Password | ' . config('app.name', 'LowBall')])
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
@@ -198,106 +198,111 @@
                     @csrf
                     @method('PUT')
                     <div
-                    class="bg-white dark:bg-[#162a1d] rounded-2xl border border-slate-200 dark:border-primary/10 p-8 space-y-6">
-                    <!-- Current Password -->
-                    <div>
-                        <label class="label-text">Current Password</label>
-                        <div class="relative">
-                            <input class="input-field pr-12" type="password" id="currentPassword"
-                                name="current_password" placeholder="Enter current password" required />
-                            <button type="button"
-                                class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
-                                data-target="currentPassword">
-                                <span class="material-symbols-outlined text-xl">visibility_off</span>
-                            </button>
+                        class="bg-white dark:bg-[#162a1d] rounded-2xl border border-slate-200 dark:border-primary/10 p-8 space-y-6">
+                        <!-- Current Password -->
+                        <div>
+                            <label class="label-text">Current Password</label>
+                            <div class="relative">
+                                <input class="input-field pr-12" type="password" id="currentPassword"
+                                    name="current_password" placeholder="Enter current password" required />
+                                <button type="button"
+                                    class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
+                                    data-target="currentPassword">
+                                    <span class="material-symbols-outlined text-xl">visibility_off</span>
+                                </button>
+                            </div>
+                            @error('current_password')<p class="text-red-500 text-xs mt-1 font-semibold">{{ $message }}
+                                </p>
+                            @enderror
                         </div>
-                        @error('current_password')<p class="text-red-500 text-xs mt-1 font-semibold">{{ $message }}</p>
-                        @enderror
-                    </div>
 
-                    <!-- New Password -->
-                    <div>
-                        <label class="label-text">New Password</label>
-                        <div class="relative">
-                            <input class="input-field pr-12" type="password" id="newPassword" name="password"
-                                placeholder="Enter new password" required />
-                            <button type="button"
-                                class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
-                                data-target="newPassword">
-                                <span class="material-symbols-outlined text-xl">visibility_off</span>
-                            </button>
-                        </div>
-                        @error('password')<p class="text-red-500 text-xs mt-1 font-semibold">{{ $message }}</p>@enderror
-                        <!-- Password Strength -->
-                        <div class="mt-3 space-y-2">
-                            <div class="flex gap-1">
-                                <div class="strength-bar flex-1 bg-slate-200 dark:bg-white/10" id="str1"></div>
-                                <div class="strength-bar flex-1 bg-slate-200 dark:bg-white/10" id="str2"></div>
-                                <div class="strength-bar flex-1 bg-slate-200 dark:bg-white/10" id="str3"></div>
-                                <div class="strength-bar flex-1 bg-slate-200 dark:bg-white/10" id="str4"></div>
+                        <!-- New Password -->
+                        <div>
+                            <label class="label-text">New Password</label>
+                            <div class="relative">
+                                <input class="input-field pr-12" type="password" id="newPassword" name="password"
+                                    placeholder="Enter new password" required />
+                                <button type="button"
+                                    class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
+                                    data-target="newPassword">
+                                    <span class="material-symbols-outlined text-xl">visibility_off</span>
+                                </button>
                             </div>
-                            <p class="text-xs text-slate-400" id="strengthLabel">Enter a password to see strength</p>
+                            @error('password')<p class="text-red-500 text-xs mt-1 font-semibold">{{ $message }}</p>
+                            @enderror
+                            <!-- Password Strength -->
+                            <div class="mt-3 space-y-2">
+                                <div class="flex gap-1">
+                                    <div class="strength-bar flex-1 bg-slate-200 dark:bg-white/10" id="str1"></div>
+                                    <div class="strength-bar flex-1 bg-slate-200 dark:bg-white/10" id="str2"></div>
+                                    <div class="strength-bar flex-1 bg-slate-200 dark:bg-white/10" id="str3"></div>
+                                    <div class="strength-bar flex-1 bg-slate-200 dark:bg-white/10" id="str4"></div>
+                                </div>
+                                <p class="text-xs text-slate-400" id="strengthLabel">Enter a password to see strength
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Confirm Password -->
-                    <div>
-                        <label class="label-text">Confirm New Password</label>
-                        <div class="relative">
-                            <input class="input-field pr-12" type="password" id="confirmPassword"
-                                name="password_confirmation" placeholder="Re-enter new password" required />
-                            <button type="button"
-                                class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
-                                data-target="confirmPassword">
-                                <span class="material-symbols-outlined text-xl">visibility_off</span>
-                            </button>
+                        <!-- Confirm Password -->
+                        <div>
+                            <label class="label-text">Confirm New Password</label>
+                            <div class="relative">
+                                <input class="input-field pr-12" type="password" id="confirmPassword"
+                                    name="password_confirmation" placeholder="Re-enter new password" required />
+                                <button type="button"
+                                    class="toggle-password absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary transition-colors"
+                                    data-target="confirmPassword">
+                                    <span class="material-symbols-outlined text-xl">visibility_off</span>
+                                </button>
+                            </div>
+                            <p class="text-xs mt-2 hidden" id="matchMsg"></p>
                         </div>
-                        <p class="text-xs mt-2 hidden" id="matchMsg"></p>
-                    </div>
 
-                    <!-- Requirements -->
-                    <div
-                        class="bg-slate-50 dark:bg-white/5 rounded-xl p-4 border border-slate-200 dark:border-white/10">
-                        <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-3">
-                            Password Requirements</p>
-                        <div class="space-y-2">
-                            <div class="flex items-center gap-2" id="req-length">
-                                <span
-                                    class="material-symbols-outlined text-sm text-slate-300 dark:text-slate-600">check_circle</span>
-                                <span class="text-xs text-slate-500 dark:text-slate-400">At least 8 characters</span>
-                            </div>
-                            <div class="flex items-center gap-2" id="req-upper">
-                                <span
-                                    class="material-symbols-outlined text-sm text-slate-300 dark:text-slate-600">check_circle</span>
-                                <span class="text-xs text-slate-500 dark:text-slate-400">One uppercase letter</span>
-                            </div>
-                            <div class="flex items-center gap-2" id="req-number">
-                                <span
-                                    class="material-symbols-outlined text-sm text-slate-300 dark:text-slate-600">check_circle</span>
-                                <span class="text-xs text-slate-500 dark:text-slate-400">One number</span>
-                            </div>
-                            <div class="flex items-center gap-2" id="req-special">
-                                <span
-                                    class="material-symbols-outlined text-sm text-slate-300 dark:text-slate-600">check_circle</span>
-                                <span class="text-xs text-slate-500 dark:text-slate-400">One special character
-                                    (!@#$%)</span>
+                        <!-- Requirements -->
+                        <div
+                            class="bg-slate-50 dark:bg-white/5 rounded-xl p-4 border border-slate-200 dark:border-white/10">
+                            <p
+                                class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-3">
+                                Password Requirements</p>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2" id="req-length">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-slate-300 dark:text-slate-600">check_circle</span>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400">At least 8
+                                        characters</span>
+                                </div>
+                                <div class="flex items-center gap-2" id="req-upper">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-slate-300 dark:text-slate-600">check_circle</span>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400">One uppercase letter</span>
+                                </div>
+                                <div class="flex items-center gap-2" id="req-number">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-slate-300 dark:text-slate-600">check_circle</span>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400">One number</span>
+                                </div>
+                                <div class="flex items-center gap-2" id="req-special">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-slate-300 dark:text-slate-600">check_circle</span>
+                                    <span class="text-xs text-slate-500 dark:text-slate-400">One special character
+                                        (!@#$%)</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Action Buttons -->
+                    <div class="mt-8 flex gap-4">
+                        <a href="{{ route('settings') }}"
+                            class="px-6 py-3 text-slate-500 font-bold text-sm hover:text-navy-deep dark:hover:text-white transition-all rounded-lg hover:bg-slate-100 dark:hover:bg-white/5">Cancel</a>
+                        <button type="submit" id="updateBtn"
+                            class="flex-1 px-8 py-3 bg-primary text-navy-deep rounded-xl font-bold text-sm hover:opacity-90 shadow-lg shadow-primary/10 transition-all opacity-40 pointer-events-none flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-lg">lock</span>
+                            Update Password
+                        </button>
+                    </div>
+                </form>
             </div>
-            <!-- Action Buttons -->
-            <div class="mt-8 flex gap-4">
-                <a href="{{ route('settings') }}"
-                    class="px-6 py-3 text-slate-500 font-bold text-sm hover:text-navy-deep dark:hover:text-white transition-all rounded-lg hover:bg-slate-100 dark:hover:bg-white/5">Cancel</a>
-                <button type="submit" id="updateBtn"
-                    class="flex-1 px-8 py-3 bg-primary text-navy-deep rounded-xl font-bold text-sm hover:opacity-90 shadow-lg shadow-primary/10 transition-all opacity-40 pointer-events-none flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-lg">lock</span>
-                    Update Password
-                </button>
-            </div>
-            </form>
-    </div>
-    </main>
+        </main>
     </div>
 
     <script>
