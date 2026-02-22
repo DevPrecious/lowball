@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Manrope', sans-serif;
+
+    --color-primary: #13ec5b;
+    --color-background-light: #f6f8f6;
+    --color-background-dark: #102216;
+    --color-navy-deep: #0d1b12;
+    --color-sage-green: #4c9a66;
+}
