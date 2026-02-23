@@ -446,11 +446,11 @@
 
                 @auth
                     <a href="{{ route('saved-offers') }}"
-                        class="hidden sm:block px-5 py-2.5 text-sm font-bold text-navy-deep hover:text-primary transition-colors dark:text-slate-100">Dashboard</a>
+                        class="px-2 sm:px-5 py-2.5 text-sm font-bold text-navy-deep hover:text-primary transition-colors dark:text-slate-100">Dashboard</a>
                 @else
                     @if (Route::has('login'))
                         <a href="{{ route('login') }}"
-                            class="hidden sm:block px-5 py-2.5 text-sm font-bold text-navy-deep hover:text-primary transition-colors dark:text-slate-100">Login</a>
+                            class="px-2 sm:px-5 py-2.5 text-sm font-bold text-navy-deep hover:text-primary transition-colors dark:text-slate-100">Login</a>
                     @endif
                 @endauth
                 <a href="{{ route('offer-details') }}"
